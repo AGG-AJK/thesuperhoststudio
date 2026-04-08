@@ -696,31 +696,110 @@
       .cta-strip { padding: 80px 32px; }
       footer { flex-direction: column; gap: 12px; text-align: center; padding: 32px; }
     }
+
+    /* ── SOUTHWESTERN DIVIDERS ── */
+    .sw-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 28px 60px;
+      background: var(--warm-white);
+    }
+    .sw-divider.dark { background: var(--dusk); }
+    .sw-divider.sand { background: var(--sand); }
+    .sw-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--clay), transparent);
+      max-width: 200px;
+    }
+    .sw-motif {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .sw-diamond {
+      width: 8px;
+      height: 8px;
+      background: var(--clay);
+      transform: rotate(45deg);
+    }
+    .sw-diamond.sm {
+      width: 5px;
+      height: 5px;
+      opacity: 0.5;
+    }
+    .sw-diamond.dark-fill { background: var(--warm-white); }
+
+    /* terracotta top-border accent on intro section */
+    .intro { border-top: 3px solid var(--clay); }
+
+    /* subtle SW texture on sand sections */
+    .services::before {
+      content: '';
+      display: block;
+      height: 4px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--clay) 0px,
+        var(--clay) 12px,
+        var(--sand) 12px,
+        var(--sand) 18px,
+        var(--sage) 18px,
+        var(--sage) 30px,
+        var(--sand) 30px,
+        var(--sand) 36px
+      );
+      opacity: 0.6;
+    }
+
+    /* kiva-inspired rounded accent on featured testimonial */
+    .testimonial-featured {
+      border-radius: 0 0 60px 0;
+    }
+
+    /* SW pattern footer accent */
+    footer::before {
+      content: '';
+      display: block;
+      height: 4px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--clay) 0px,
+        var(--clay) 12px,
+        var(--dusk) 12px,
+        var(--dusk) 18px,
+        var(--sage) 18px,
+        var(--sage) 30px,
+        var(--dusk) 30px,
+        var(--dusk) 36px
+      );
+      opacity: 0.4;
+      margin-bottom: 28px;
+    }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav style="position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 60px;display:flex;justify-content:space-between;align-items:center;background:rgba(44,36,32,0.95);backdrop-filter:blur(8px);">
-  <span style="font-family:Playfair Display,serif;font-size:18px;color:#FDFAF5;letter-spacing:1px;">The Superhost Studio</span>
-  <a href="#services" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#C4845A;text-decoration:none;font-weight:500;">Work With Me</a>
-</nav>
-<!-- NAV -->
-<nav style="position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 60px;display:flex;justify-content:space-between;align-items:center;background:rgba(44,36,32,0.95);backdrop-filter:blur(8px);">
-  <span style="font-family:'Playfair Display',serif;font-size:18px;color:#FDFAF5;letter-spacing:1px;">The Superhost Studio</span>
-  <a href="#services" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#C4845A;text-decoration:none;font-weight:500;">Work With Me</a>
-</nav>
+
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
     <p class="eyebrow">The Superhost Studio · New Mexico</p>
     <h1>Your listing has more potential than it's <em>showing.</em></h1>
-    <p class="hero-sub">I help short-term rental owners across the Southwest fix what's quietly costing them bookings — and build the kind of guest experience that earns Superhost status. 80+ five-star reviews. Real results.</p>
+    <p class="hero-sub">I help short-term rental owners across the Southwest fix what's quietly costing them bookings — and build the kind of guest experience that earns Superhost status. 80+ five-star reviews in year one. Real results.</p>
     <a href="#services" class="cta-btn">See How I Can Help</a>
   </div>
-  <div class="hero-right">
-    <div class="hero-right-texture"></div>
-    <div class="hero-stars">
+  <div class="hero-right" style="position:relative;overflow:hidden;">
+    <img
+      src="https://images.unsplash.com/photo-1761666254267-afe141cdc951?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      alt="Simple warm inviting home interior"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;"
+    />
+    <div style="position:absolute;inset:0;background:rgba(44,36,32,0.35);"></div>
+    <div class="hero-stars" style="position:relative;z-index:2;">
       <span class="star-rating">★★★★★</span>
       <span class="star-count">80+</span>
       <span class="star-label">Five-Star Reviews · Taos, NM</span>
@@ -741,11 +820,22 @@
   </div>
 </section>
 
+
+<!-- SW DIVIDER -->
+<div class="sw-divider">
+  <div class="sw-line"></div>
+  <div class="sw-motif">
+    <div class="sw-diamond sm"></div>
+    <div class="sw-diamond"></div>
+    <div class="sw-diamond sm"></div>
+  </div>
+  <div class="sw-line"></div>
+</div>
 <!-- WHAT GUESTS SAID -->
 <section class="reviews-section">
   <div class="reviews-header">
     <h2>What guests actually notice</h2>
-    <p>From 80+ verified stays · Ranchos de Taos, New Mexico</p>
+    <p>From 80+ verified five-star stays in year one · Ranchos de Taos, New Mexico</p>
   </div>
   <div class="reviews-grid">
     <div class="review-card">
@@ -781,6 +871,57 @@
   </div>
 </section>
 
+
+<!-- PHOTO STRIP -->
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;height:320px;overflow:hidden;">
+  <div style="overflow:hidden;position:relative;">
+    <img
+      src="https://images.unsplash.com/photo-1674160816935-5e2dac0cf7f7?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      alt="Warm inviting living room with cozy furnishings"
+      style="width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.4s ease;"
+      onmouseover="this.style.transform='scale(1.05)'"
+      onmouseout="this.style.transform='scale(1)'"
+    />
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(transparent,rgba(44,36,32,0.7));">
+      <p style="color:#FDFAF5;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin:0;font-family:Arial,sans-serif;">Thoughtfully designed</p>
+    </div>
+  </div>
+  <div style="overflow:hidden;position:relative;">
+    <img
+      src="https://plus.unsplash.com/premium_photo-1733864827270-0c10a3a4960c?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      alt="Cozy comfortable bedroom"
+      style="width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.4s ease;"
+      onmouseover="this.style.transform='scale(1.05)'"
+      onmouseout="this.style.transform='scale(1)'"
+    />
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(transparent,rgba(44,36,32,0.7));">
+      <p style="color:#FDFAF5;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin:0;font-family:Arial,sans-serif;">Cozy & comfortable</p>
+    </div>
+  </div>
+  <div style="overflow:hidden;position:relative;">
+    <img
+      src="https://images.unsplash.com/photo-1722340319321-f73f2b96e0ff?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      alt="Warm welcoming kitchen"
+      style="width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.4s ease;"
+      onmouseover="this.style.transform='scale(1.05)'"
+      onmouseout="this.style.transform='scale(1)'"
+    />
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(transparent,rgba(44,36,32,0.7));">
+      <p style="color:#FDFAF5;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin:0;font-family:Arial,sans-serif;">Warm & welcoming</p>
+    </div>
+  </div>
+</div>
+
+<!-- SW DIVIDER -->
+<div class="sw-divider">
+  <div class="sw-line"></div>
+  <div class="sw-motif">
+    <div class="sw-diamond sm"></div>
+    <div class="sw-diamond"></div>
+    <div class="sw-diamond sm"></div>
+  </div>
+  <div class="sw-line"></div>
+</div>
 <!-- WHAT HOSTS GET WRONG -->
 <section class="problems">
   <h2>What's quietly costing you stars</h2>
@@ -817,6 +958,17 @@
   </div>
 </section>
 
+
+<!-- SW DIVIDER -->
+<div class="sw-divider">
+  <div class="sw-line"></div>
+  <div class="sw-motif">
+    <div class="sw-diamond sm"></div>
+    <div class="sw-diamond"></div>
+    <div class="sw-diamond sm"></div>
+  </div>
+  <div class="sw-line"></div>
+</div>
 <!-- SERVICES -->
 <section class="services" id="services">
   <div class="services-inner">
@@ -858,6 +1010,17 @@
   </div>
 </section>
 
+
+<!-- SW DIVIDER -->
+<div class="sw-divider sand">
+  <div class="sw-line"></div>
+  <div class="sw-motif">
+    <div class="sw-diamond sm"></div>
+    <div class="sw-diamond"></div>
+    <div class="sw-diamond sm"></div>
+  </div>
+  <div class="sw-line"></div>
+</div>
 <!-- TESTIMONIALS -->
 <section class="testimonials">
   <h2>In their own words</h2>
@@ -867,7 +1030,7 @@
   </div>
   <div class="testimonials-row">
     <div class="testimonial-small">
-      <blockquote>"Amanda was the perfect host. Amanda was the perfect host. We loved every aspect of the property."</blockquote>
+      <blockquote>"Amanda was the perfect host. We loved every aspect of the property."</blockquote>
       <cite>Jennifer · Kansas City, MO</cite>
     </div>
     <div class="testimonial-small">
@@ -881,18 +1044,37 @@
   </div>
 </section>
 
+
+<!-- SW DIVIDER -->
+<div class="sw-divider dark">
+  <div class="sw-line" style="background:linear-gradient(to right,transparent,rgba(253,250,245,0.3),transparent);"></div>
+  <div class="sw-motif">
+    <div class="sw-diamond sm dark-fill"></div>
+    <div class="sw-diamond dark-fill"></div>
+    <div class="sw-diamond sm dark-fill"></div>
+  </div>
+  <div class="sw-line" style="background:linear-gradient(to right,transparent,rgba(253,250,245,0.3),transparent);"></div>
+</div>
 <!-- ABOUT -->
-<section class="about">
+<section class="about" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;z-index:0;">
+    <img
+      src="https://images.unsplash.com/photo-1587541203297-e37ab236abfb?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      alt="Warm inviting home"
+      style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.15;"
+    />
+  </div>
+  <div style="position:relative;z-index:1;">
   <div class="about-inner">
     <div class="about-text">
       <h2>Why this works</h2>
-      <p>I'm not teaching from a playbook I read. I built and ran a five-star short-term rental in Taos, New Mexico — a competitive mountain destination with high guest expectations and a real market. I figured out what moved the needle through trial, adjustment, and paying attention to what guests actually said.</p>
+      <p>I'm not teaching from a playbook I read. I built and ran a five-star short-term rental in Taos, New Mexico — earning 80+ five-star reviews in year one in a competitive mountain destination. I figured out what moved the needle through trial, adjustment, and paying attention to what guests actually said.</p>
       <p>The things that earned Superhost status weren't complicated. They were consistent: fast communication, a property that matched its listing, and the kind of small touches guests didn't expect but remembered. I know what those are and how to build them into any listing.</p>
     </div>
     <div class="about-stats">
       <div class="stat">
-        <span class="stat-num">30+</span>
-        <span class="stat-label">Five-Star Reviews</span>
+        <span class="stat-num">80+</span>
+        <span class="stat-label">Five-Star Reviews in Year One</span>
       </div>
       <div class="stat">
         <span class="stat-num">★★★★★</span>
@@ -906,6 +1088,17 @@
   </div>
 </section>
 
+
+<!-- SW DIVIDER -->
+<div class="sw-divider">
+  <div class="sw-line"></div>
+  <div class="sw-motif">
+    <div class="sw-diamond sm"></div>
+    <div class="sw-diamond"></div>
+    <div class="sw-diamond sm"></div>
+  </div>
+  <div class="sw-line"></div>
+</div>
 <!-- CTA STRIP -->
 <section class="cta-strip" id="book">
   <h2>Start with a free 20-minute call.</h2>
