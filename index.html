@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Superhost Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sand: #F5EFE4;
+      --clay: #C4845A;
+      --dusk: #2C2420;
+      --sage: #7A8C74;
+      --warm-white: #FDFAF5;
+      --mid: #8C7B6B;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--warm-white);
+      color: var(--dusk);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      background: var(--dusk);
+      padding: 80px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-left::after {
+      content: '';
+      position: absolute;
+      right: -40px;
+      top: 0;
+      bottom: 0;
+      width: 80px;
+      background: var(--dusk);
+      clip-path: polygon(0 0, 0% 100%, 100% 100%);
+      z-index: 3;
+    }
+
+    .hero-right {
+      background: var(--sand);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right-texture {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 70% 30%, rgba(196,132,90,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 30% 80%, rgba(122,140,116,0.12) 0%, transparent 50%);
+    }
+
+    .hero-stars {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .star-rating {
+      font-size: 48px;
+      letter-spacing: 4px;
+      color: var(--clay);
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .star-count {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      color: var(--dusk);
+      line-height: 1;
+      display: block;
+    }
+
+    .star-label {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--mid);
+      display: block;
+      margin-top: 8px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--clay);
+      font-weight: 500;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 400;
+      color: var(--warm-white);
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--clay);
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(253,250,245,0.7);
+      max-width: 380px;
+      margin-bottom: 48px;
+      line-height: 1.8;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--clay);
+      color: var(--warm-white);
+      text-decoration: none;
+      padding: 16px 36px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .cta-btn::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      width: 100%;
+      height: 100%;
+      border: 1px solid var(--clay);
+      transition: all 0.3s ease;
+    }
+
+    .cta-btn:hover {
+      background: var(--warm-white);
+      color: var(--clay);
+    }
+
+    .cta-btn:hover::after {
+      bottom: -6px;
+      right: -6px;
+    }
+
+    /* ── INTRO ── */
+    .intro {
+      padding: 120px 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .intro-label {
+      position: sticky;
+      top: 40px;
+    }
+
+    .section-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 80px;
+      color: rgba(196,132,90,0.15);
+      line-height: 1;
+      display: block;
+      margin-bottom: -20px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--clay);
+    }
+
+    .intro-body p {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--dusk);
+      margin-bottom: 20px;
+      line-height: 1.9;
+    }
+
+    .intro-body p strong {
+      font-weight: 500;
+      color: var(--dusk);
+    }
+
+    /* ── WHAT GUESTS SAID ── */
+    .reviews-section {
+      background: var(--dusk);
+      padding: 100px 60px;
+      overflow: hidden;
+    }
+
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    .reviews-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3vw, 44px);
+      font-weight: 400;
+      color: var(--warm-white);
+      margin-bottom: 12px;
+    }
+
+    .reviews-header p {
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--clay);
+      font-weight: 300;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .review-card {
+      background: rgba(253,250,245,0.04);
+      padding: 36px 32px;
+      border-left: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .review-card:hover {
+      background: rgba(253,250,245,0.08);
+      border-left-color: var(--clay);
+    }
+
+    .review-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-style: italic;
+      color: var(--warm-white);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .review-author {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--clay);
+      font-weight: 500;
+    }
+
+    .review-location {
+      font-size: 11px;
+      color: rgba(253,250,245,0.4);
+      margin-top: 2px;
+    }
+
+    /* ── WHAT HOSTS GET WRONG ── */
+    .problems {
+      padding: 120px 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .problems h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3vw, 44px);
+      font-weight: 400;
+      color: var(--dusk);
+      margin-bottom: 16px;
+    }
+
+    .problems-intro {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--mid);
+      max-width: 600px;
+      margin-bottom: 60px;
+    }
+
+    .problems-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+
+    .problem-item {
+      padding: 36px 40px;
+      background: var(--sand);
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .problem-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      color: var(--clay);
+      opacity: 0.4;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: -4px;
+    }
+
+    .problem-text strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--dusk);
+      margin-bottom: 6px;
+    }
+
+    .problem-text p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      background: var(--sand);
+      padding: 120px 60px;
+    }
+
+    .services-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .services-header {
+      margin-bottom: 60px;
+    }
+
+    .services-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3vw, 44px);
+      font-weight: 400;
+      color: var(--dusk);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--warm-white);
+      padding: 52px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--clay);
+    }
+
+    .service-tag {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--clay);
+      font-weight: 500;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .service-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--dusk);
+      margin-bottom: 8px;
+    }
+
+    .service-price {
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--clay);
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    .service-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.9;
+      margin-bottom: 32px;
+    }
+
+    .service-includes {
+      list-style: none;
+      margin-bottom: 40px;
+    }
+
+    .service-includes li {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--dusk);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(44,36,32,0.08);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .service-includes li::before {
+      content: '→';
+      color: var(--clay);
+      flex-shrink: 0;
+    }
+
+    .service-cta {
+      display: inline-block;
+      background: var(--dusk);
+      color: var(--warm-white);
+      text-decoration: none;
+      padding: 14px 32px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .service-cta:hover {
+      background: var(--clay);
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      padding: 120px 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonials h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3vw, 44px);
+      font-weight: 400;
+      color: var(--dusk);
+      margin-bottom: 60px;
+    }
+
+    .testimonial-featured {
+      background: var(--dusk);
+      padding: 60px;
+      margin-bottom: 3px;
+      position: relative;
+    }
+
+    .testimonial-featured::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 200px;
+      color: rgba(196,132,90,0.1);
+      position: absolute;
+      top: -20px;
+      left: 40px;
+      line-height: 1;
+    }
+
+    .testimonial-featured blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(18px, 2vw, 26px);
+      font-style: italic;
+      color: var(--warm-white);
+      line-height: 1.7;
+      max-width: 800px;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 28px;
+    }
+
+    .testimonial-featured cite {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--clay);
+      font-style: normal;
+    }
+
+    .testimonials-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+
+    .testimonial-small {
+      background: var(--sand);
+      padding: 32px;
+    }
+
+    .testimonial-small blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      font-style: italic;
+      color: var(--dusk);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .testimonial-small cite {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--clay);
+      font-style: normal;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background: var(--clay);
+      padding: 100px 60px;
+    }
+
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 400;
+      color: var(--warm-white);
+      margin-bottom: 28px;
+    }
+
+    .about p {
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(253,250,245,0.85);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    .about-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .stat {
+      border-top: 1px solid rgba(253,250,245,0.2);
+      padding-top: 24px;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      color: var(--warm-white);
+      line-height: 1;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(253,250,245,0.6);
+      display: block;
+      margin-top: 4px;
+    }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      padding: 100px 60px;
+      text-align: center;
+      background: var(--warm-white);
+    }
+
+    .cta-strip h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3vw, 48px);
+      font-weight: 400;
+      color: var(--dusk);
+      margin-bottom: 16px;
+    }
+
+    .cta-strip p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--mid);
+      margin-bottom: 40px;
+    }
+
+    .cta-strip .cta-btn {
+      font-size: 12px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dusk);
+      padding: 40px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 12px;
+      color: rgba(253,250,245,0.3);
+    }
+
+    footer a {
+      font-size: 12px;
+      color: var(--clay);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-left > * {
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .hero-left .eyebrow { animation-delay: 0.1s; opacity: 0; }
+    .hero-left h1 { animation-delay: 0.25s; opacity: 0; }
+    .hero-left .hero-sub { animation-delay: 0.4s; opacity: 0; }
+    .hero-left .cta-btn { animation-delay: 0.55s; opacity: 0; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 80px 32px 60px; }
+      .hero-left::after { display: none; }
+      .hero-right { min-height: 300px; }
+      .intro { grid-template-columns: 1fr; gap: 40px; padding: 80px 32px; }
+      .intro-label { position: static; }
+      .reviews-section { padding: 80px 32px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .problems { padding: 80px 32px; }
+      .problems-list { grid-template-columns: 1fr; }
+      .services { padding: 80px 32px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials { padding: 80px 32px; }
+      .testimonials-row { grid-template-columns: 1fr; }
+      .testimonial-featured { padding: 40px 32px; }
+      .about { padding: 80px 32px; }
+      .about-inner { grid-template-columns: 1fr; gap: 48px; }
+      .cta-strip { padding: 80px 32px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; padding: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 60px;display:flex;justify-content:space-between;align-items:center;background:rgba(44,36,32,0.95);backdrop-filter:blur(8px);">
+  <span style="font-family:Playfair Display,serif;font-size:18px;color:#FDFAF5;letter-spacing:1px;">The Superhost Studio</span>
+  <a href="#services" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#C4845A;text-decoration:none;font-weight:500;">Work With Me</a>
+</nav>
+<!-- NAV -->
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 60px;display:flex;justify-content:space-between;align-items:center;background:rgba(44,36,32,0.95);backdrop-filter:blur(8px);">
+  <span style="font-family:'Playfair Display',serif;font-size:18px;color:#FDFAF5;letter-spacing:1px;">The Superhost Studio</span>
+  <a href="#services" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#C4845A;text-decoration:none;font-weight:500;">Work With Me</a>
+</nav>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="eyebrow">The Superhost Studio · New Mexico</p>
+    <h1>Your listing has more potential than it's <em>showing.</em></h1>
+    <p class="hero-sub">I help short-term rental owners across the Southwest fix what's quietly costing them bookings — and build the kind of guest experience that earns Superhost status. 80+ five-star reviews. Real results.</p>
+    <a href="#services" class="cta-btn">See How I Can Help</a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-texture"></div>
+    <div class="hero-stars">
+      <span class="star-rating">★★★★★</span>
+      <span class="star-count">80+</span>
+      <span class="star-label">Five-Star Reviews · Taos, NM</span>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="intro-label">
+    <span class="section-num">01</span>
+    <span class="section-title">The Problem</span>
+  </div>
+  <div class="intro-body">
+    <p>Most STR hosts know something's off. The bookings are inconsistent. The reviews are fine but not glowing. The pricing feels like a guess. They're not doing anything obviously wrong — but they're not getting the results they expected either.</p>
+    <p>Guests tell you exactly what they value in their reviews — if you know how to read them. They notice when a host responds fast. They remember when the local guide sent them somewhere they'd never find on their own. They book again when a place looks exactly like the photos and <strong>feels better than they expected.</strong></p>
+    <p>I ran a five-star property in Taos, New Mexico from launch through Superhost status. I learned what actually drives that outcome — not from a course, from doing it. Now I work with STR owners who are ready to stop guessing.</p>
+  </div>
+</section>
+
+<!-- WHAT GUESTS SAID -->
+<section class="reviews-section">
+  <div class="reviews-header">
+    <h2>What guests actually notice</h2>
+    <p>From 80+ verified stays · Ranchos de Taos, New Mexico</p>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <p class="review-quote">"The hosts thought of EVERYTHING. From extra towels, blankets, pillows and electric chargers for devices — they had it ready."</p>
+      <p class="review-author">Marissa</p>
+      <p class="review-location">San Antonio, TX</p>
+    </div>
+    <div class="review-card">
+      <p class="review-quote">"One of the highlights of our trip was the thoughtfully curated booklet of recommendations she provided. We discovered great eateries and beautiful hiking trails we might have otherwise overlooked."</p>
+      <p class="review-author">Elizabeth</p>
+      <p class="review-location">9 years on Airbnb</p>
+    </div>
+    <div class="review-card">
+      <p class="review-quote">"Amanda was so friendly and very easy to communicate with. We fell in love with Taos — next time we're over this way, we will definitely book with Amanda."</p>
+      <p class="review-author">Nichole</p>
+      <p class="review-location">Greensboro, NC</p>
+    </div>
+    <div class="review-card">
+      <p class="review-quote">"Amanda is a great host who always responds, has clear communication, and a friendly demeanor. We will absolutely recommend this spot."</p>
+      <p class="review-author">Rachel</p>
+      <p class="review-location">Colorado Springs, CO</p>
+    </div>
+    <div class="review-card">
+      <p class="review-quote">"Amanda was a thoughtful and gracious host and the house is BEAUTIFUL."</p>
+      <p class="review-author">Samantha</p>
+      <p class="review-location">Arvada, CO</p>
+    </div>
+    <div class="review-card">
+      <p class="review-quote">"The place was just as described, well appointed and beautifully decorated. Amanda was quick to respond to messages and very helpful."</p>
+      <p class="review-author">Anne</p>
+      <p class="review-location">Pojoaque, NM</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT HOSTS GET WRONG -->
+<section class="problems">
+  <h2>What's quietly costing you stars</h2>
+  <p class="problems-intro">The same issues show up in almost every underperforming listing. Here's what I look for first.</p>
+  <div class="problems-list">
+    <div class="problem-item">
+      <span class="problem-num">1</span>
+      <div class="problem-text">
+        <strong>Your listing doesn't answer the real question</strong>
+        <p>Guests aren't reading your listing — they're scanning for answers to their specific worry. Is it actually private? Will the host respond if something goes wrong? If your copy doesn't address those directly, they'll book somewhere that does.</p>
+      </div>
+    </div>
+    <div class="problem-item">
+      <span class="problem-num">2</span>
+      <div class="problem-text">
+        <strong>Communication gaps before check-in</strong>
+        <p>Most host-guest friction happens in the 48 hours before arrival. What you send, when you send it, and how you frame expectations in that window shapes the entire stay — including the review.</p>
+      </div>
+    </div>
+    <div class="problem-item">
+      <span class="problem-num">3</span>
+      <div class="problem-text">
+        <strong>The amenities guests mention are missing</strong>
+        <p>Guests notice the charger by the bed. They remember the local guide. They write about the extra blanket in January. These aren't luxuries — they're the difference between a four-star and a five-star review.</p>
+      </div>
+    </div>
+    <div class="problem-item">
+      <span class="problem-num">4</span>
+      <div class="problem-text">
+        <strong>No cushion for the one bad stay</strong>
+        <p>Every host eventually gets a guest they can't win. The hosts who survive it are the ones with enough five-star reviews in the bank that one anomaly doesn't move their average — and who know exactly how to respond publicly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <h2>Two ways to work together</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-tag">Quick Win</span>
+        <h3 class="service-name">The Listing Audit</h3>
+        <span class="service-price">$197</span>
+        <p class="service-desc">One listing. 90 minutes. A written action plan you can implement the same week. Best for hosts who want a clear diagnosis without a long commitment.</p>
+        <ul class="service-includes">
+          <li>Photo and copy review</li>
+          <li>Pricing strategy assessment</li>
+          <li>Guest communication audit</li>
+          <li>Review history analysis</li>
+          <li>Written priority action plan</li>
+          <li>Delivered over Zoom</li>
+        </ul>
+        <a href="#book" class="service-cta">Book an Audit</a>
+      </div>
+      <div class="service-card">
+        <span class="service-tag">Full System</span>
+        <h3 class="service-name">The 90-Day Sprint</h3>
+        <span class="service-price">$750</span>
+        <p class="service-desc">Four sessions over 90 days. We rebuild the full system — listing, pricing, guest experience, and a roadmap to Superhost. For new hosts who want to start right, and established hosts ready to turn it around.</p>
+        <ul class="service-includes">
+          <li>Complete listing optimization</li>
+          <li>Dynamic pricing setup</li>
+          <li>Guest communication templates</li>
+          <li>Local guide strategy</li>
+          <li>Review recovery playbook</li>
+          <li>Superhost roadmap</li>
+        </ul>
+        <a href="#book" class="service-cta">Start the Sprint</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <h2>In their own words</h2>
+  <div class="testimonial-featured">
+    <blockquote>"This place was one of our favorites we stayed on our New Mexico road trip. It's private enough that we never saw another person while here but close enough to downtown Taos. I'm actually sad I'm not there still."</blockquote>
+    <cite>Jared · Charlotte, NC · December 2025</cite>
+  </div>
+  <div class="testimonials-row">
+    <div class="testimonial-small">
+      <blockquote>"Amanda was the perfect host. Amanda was the perfect host. We loved every aspect of the property."</blockquote>
+      <cite>Jennifer · Kansas City, MO</cite>
+    </div>
+    <div class="testimonial-small">
+      <blockquote>"Wow, wow, wow. Talk about one of the most peaceful, relaxing, and gorgeous Airbnbs I've ever stayed in."</blockquote>
+      <cite>Morgan · Denver, CO</cite>
+    </div>
+    <div class="testimonial-small">
+      <blockquote>"I could have stayed forever. It had everything I needed to feel right at home."</blockquote>
+      <cite>Jennifer · Kansas City, MO</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-inner">
+    <div class="about-text">
+      <h2>Why this works</h2>
+      <p>I'm not teaching from a playbook I read. I built and ran a five-star short-term rental in Taos, New Mexico — a competitive mountain destination with high guest expectations and a real market. I figured out what moved the needle through trial, adjustment, and paying attention to what guests actually said.</p>
+      <p>The things that earned Superhost status weren't complicated. They were consistent: fast communication, a property that matched its listing, and the kind of small touches guests didn't expect but remembered. I know what those are and how to build them into any listing.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat">
+        <span class="stat-num">30+</span>
+        <span class="stat-label">Five-Star Reviews</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">★★★★★</span>
+        <span class="stat-label">Superhost Status</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">SW</span>
+        <span class="stat-label">New Mexico · Arizona · Texas Markets</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="cta-strip" id="book">
+  <h2>Start with a free 20-minute call.</h2>
+  <p>We'll look at your listing together and I'll tell you exactly where I'd focus first — no commitment required.</p>
+  <a href="https://calendly.com" class="cta-btn">Book a Free Intro Call</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 · The Superhost Studio · Las Cruces, New Mexico</p>
+  <a href="/cdn-cgi/l/email-protection#88e0ede4e4e7c8f1e7fdfaede5e9e1e4a6ebe7e5"><span cla
