@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Superhost Studio</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -103,7 +104,7 @@
       font-size: 13px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--mid);
+      color: #FDFAF5;
       display: block;
       margin-top: 8px;
     }
@@ -783,6 +784,19 @@
 </head>
 <body>
 
+<!-- NAV -->
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 60px;display:flex;justify-content:space-between;align-items:center;background:rgba(44,36,32,0.95);backdrop-filter:blur(8px);">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="24" height="24" style="flex-shrink:0;">
+      <rect width="32" height="32" fill="#2C2420"/>
+      <rect x="14" y="3" width="4" height="4" fill="#C4845A" transform="rotate(45 16 5)"/>
+      <text x="16" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="18" font-weight="bold" fill="#FDFAF5" letter-spacing="-1">S</text>
+      <rect x="8" y="25" width="16" height="2" fill="#C4845A"/>
+    </svg>
+    <span style="font-family:'Playfair Display',serif;font-size:18px;color:#FDFAF5;letter-spacing:1px;">The Superhost Studio</span>
+  </div>
+  <a href="#services" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#C4845A;text-decoration:none;font-weight:500;">Work With Me</a>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
@@ -980,7 +994,7 @@
         <span class="service-tag">Quick Win</span>
         <h3 class="service-name">The Listing Audit</h3>
         <span class="service-price">$197</span>
-        <p class="service-desc">One listing. 90 minutes. A written action plan you can implement the same week. Best for hosts who want a clear diagnosis without a long commitment.</p>
+        <p class="service-desc">One listing. 90 minutes. A written action plan you can implement the same week. Best for hosts who want a clear diagnosis without a long commitment. Las Cruces hosts: in-person property visits available.</p>
         <ul class="service-includes">
           <li>Photo and copy review</li>
           <li>Pricing strategy assessment</li>
@@ -988,6 +1002,7 @@
           <li>Review history analysis</li>
           <li>Written priority action plan</li>
           <li>Delivered over Zoom</li>
+          <li>In-person property visits for Las Cruces hosts</li>
         </ul>
         <a href="#book" class="service-cta">Book an Audit</a>
       </div>
@@ -995,7 +1010,7 @@
         <span class="service-tag">Full System</span>
         <h3 class="service-name">The 90-Day Sprint</h3>
         <span class="service-price">$750</span>
-        <p class="service-desc">Four sessions over 90 days. We rebuild the full system — listing, pricing, guest experience, and a roadmap to Superhost. For new hosts who want to start right, and established hosts ready to turn it around.</p>
+        <p class="service-desc">Four sessions over 90 days. We rebuild the full system — listing, pricing, guest experience, and a roadmap to Superhost. For new hosts who want to start right, and established hosts ready to turn it around. Includes sourcing recommendations for linens, personal care products, and decor.</p>
         <ul class="service-includes">
           <li>Complete listing optimization</li>
           <li>Dynamic pricing setup</li>
@@ -1003,6 +1018,8 @@
           <li>Local guide strategy</li>
           <li>Review recovery playbook</li>
           <li>Superhost roadmap</li>
+          <li>Sourcing guide: linens, personal care &amp; decor</li>
+          <li>In-person property visits for Las Cruces hosts</li>
         </ul>
         <a href="#book" class="service-cta">Start the Sprint</a>
       </div>
