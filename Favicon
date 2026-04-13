@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Background: dusk -->
+  <rect width="32" height="32" fill="#2C2420"/>
+  
+  <!-- Southwestern diamond motif top center -->
+  <rect x="14" y="3" width="4" height="4" fill="#C4845A" transform="rotate(45 16 5)"/>
+  
+  <!-- Letter S - bold, centered -->
+  <text 
+    x="16" 
+    y="22" 
+    text-anchor="middle" 
+    font-family="Georgia, serif" 
+    font-size="18" 
+    font-weight="bold"
+    fill="#FDFAF5"
+    letter-spacing="-1"
+  >S</text>
+  
+  <!-- Clay underline accent -->
+  <rect x="8" y="25" width="16" height="2" fill="#C4845A"/>
+</svg>
